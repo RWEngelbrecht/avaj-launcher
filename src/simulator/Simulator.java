@@ -42,8 +42,6 @@ public class Simulator {
 			System.out.println("There was an error while reading the file " + arg[0]);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Specify simulation file");
-		} finally {
-			Logger.getLogger().close();
 		}
 	}
 }
