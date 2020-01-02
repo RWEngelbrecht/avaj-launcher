@@ -3,14 +3,14 @@ package weather;
 import aircraft.Coordinates;
 
 public class WeatherProvider {
-	private WeatherProvider weatherProvider = null;
+	private static WeatherProvider weatherProvider = null;
 	private String[] weather = {"sun", "snow", "rain", "fog"};
 
 	private WeatherProvider() {
 
 	}
 
-	public WeatherProvider getProvider() {
+	public static WeatherProvider getProvider() {
 		if (weatherProvider == null)
 			weatherProvider = new WeatherProvider();
 		return (weatherProvider);
