@@ -3,6 +3,7 @@ package simulator;
 import java.io.*;
 import java.util.*;
 import simulator.interfaces.Flyable;
+import aircraft.AircraftFactory;
 
 public class Simulator {
 	private static WeatherTower weatherTower;
