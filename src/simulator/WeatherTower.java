@@ -1,14 +1,14 @@
 package simulator;
 
 import aircraft.Coordinates;
-import weather.WeatherProvider;
+import weather.*;
 
 public class WeatherTower extends Tower{
 	public String getWeather(Coordinates coordinates) {
 		return (WeatherProvider.getProvider().getCurrentWeather(coordinates));
 	}
 
-	private void changeWeather() {
-		
+	protected void changeWeather() {
+
 	}
 }
