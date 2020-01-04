@@ -21,11 +21,11 @@ public class WeatherProvider {
 		// int latidude = coordinates.getLatitude();
 		// int longitude = coordinates.getLongitude();
 
-		if (height <= 100 && height >= 90)
+		if (height <= 100 && height >= 75)
 			return (weather[0]);
-		else if (height < 90 && height >= 80)
+		else if (height < 75 && height >= 55)
 			return (weather[1]);
-		else if (height < 80 && height >= 70)
+		else if (height < 55 && height >= 35)
 			return (weather[2]);
 		return (weather[3]);
 	}
