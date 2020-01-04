@@ -16,7 +16,9 @@ public class Tower {
 	}
 
 	protected void conditionsChanged() {
-
+		for (Flyable flyable : crafts) {
+			flyable.updateConditions();
+		}
 	}
 }
 
