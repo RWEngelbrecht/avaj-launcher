@@ -9,7 +9,6 @@ import avaj.aircraft.*;
 public class Simulator {
 	private static WeatherTower weatherTower = new WeatherTower();
 	private static List<Flyable> flyables = new ArrayList<Flyable>();
-	// public static FileWriter fileWriter = new FileWriter("./simulation.txt");
 	public static PrintWriter printWriter = null;
 
 	public static void main(String[] arg) throws InterruptedException {
@@ -36,11 +35,11 @@ public class Simulator {
 
 				for (Flyable flyable : flyables) {
 					flyable.registerTower(weatherTower);
-					// System.out.println("wtf is going on");
 				}
 
 				for (int i = 1; i <= simulations; i++) {
 					weatherTower.changeWeather();
+					
 				}
 				reader.close();
 				printWriter.close();
