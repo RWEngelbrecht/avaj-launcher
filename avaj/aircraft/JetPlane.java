@@ -11,7 +11,7 @@ public class JetPlane extends Aircraft implements Flyable {
 	}
 
 	public void updateConditions() {
-		String weather = weatherTower.getWeather(this.coordinates);
+		String weather = this.weatherTower.getWeather(this.coordinates);
 		if (weather.equalsIgnoreCase("sun")) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
