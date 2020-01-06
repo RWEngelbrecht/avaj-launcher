@@ -1,11 +1,11 @@
 package avaj.simulator;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 import avaj.simulator.interfaces.*;
 
-
 public class Tower {
-	private static List<Flyable> crafts = new ArrayList<Flyable>();
+	private CopyOnWriteArrayList<Flyable> crafts = new CopyOnWriteArrayList<Flyable>();
 
 	public void register(Flyable flyable) {
 		crafts.add(flyable);
@@ -16,8 +16,10 @@ public class Tower {
 	}
 
 	protected void conditionsChanged() {
-		for (Flyable flyable : crafts) {
-			flyable.updateConditions();
+		if (crafts.size() >= 0) {
+			for (Flyable flyable : crafts) {
+				flyable.updateConditions();
+			}
 		}
 	}
 }
