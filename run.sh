@@ -1,3 +1,4 @@
+rm -f simulation.txt
 rm -f avaj/aircraft/*.class
 rm -f avaj/simulator/*.class
 rm -f avaj/simulator/interfaces/*.class
