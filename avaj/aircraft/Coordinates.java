@@ -11,13 +11,13 @@ public class Coordinates {
 		this.height = height;
 
 
-		if (this.height > 100)
+		if (height >= 100)
 			this.height = 100;
-		if (this.height < 0)
+		if (height <= 0)
 			this.height = 0;
-		if (this.longitude < 0)
+		if (longitude <= 0)
 			this.longitude = 0;
-		if (this.latitude < 0)
+		if (latitude <= 0)
 			this.latitude = 0;
 	}
 
