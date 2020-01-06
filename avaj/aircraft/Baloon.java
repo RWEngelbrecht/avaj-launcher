@@ -12,9 +12,8 @@ public class Baloon extends Aircraft implements Flyable {
 	}
 
 	public void updateConditions() {
-System.out.printf("Baloon %s conditions updated  at longitude %d  latitude %d   height %d %n", this.name,this.coordinates.getLongitude(),this.coordinates.getLatitude(), this.coordinates.getHeight());
 		String weather = this.weatherTower.getWeather(this.coordinates);
-		if (weather.equalsIgnoreCase("sun")) {
+		if (weather.equalsIgnoreCase("sun") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude() + 2,
 				this.coordinates.getLatitude(),
@@ -22,30 +21,27 @@ System.out.printf("Baloon %s conditions updated  at longitude %d  latitude %d   
 			);
 			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): Praise the sun!");
 			System.out.println("Baloon#"+this.name+"("+this.id+"): Praise the sun!");
-		} else if (weather.equalsIgnoreCase("rain")) {
+		} else if (weather.equalsIgnoreCase("rain") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude(),
 				this.coordinates.getHeight() - 5
 			);
 			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): Raindrops keep falling on my head... Wait... *screams*");
-			System.out.println("Baloon#"+this.name+"("+this.id+"): Raindrops keep falling on my head... Wait... *screams*");
-		} else if (weather.equalsIgnoreCase("fog")) {
+		} else if (weather.equalsIgnoreCase("fog") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude(),
 				this.coordinates.getHeight() - 3
 			);
 			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): You'd think the rotors would help clear this fog.");
-			System.out.println("Baloon#"+this.name+"("+this.id+"): You'd think the rotors would help clear this fog.");
-		} else if (weather.equalsIgnoreCase("snow")) {
+		} else if (weather.equalsIgnoreCase("snow") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude(),
 				this.coordinates.getHeight() - 15
 			);
 			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): Staying frosty. As if we have a choice...");
-			System.out.println("Baloon#"+this.name+"("+this.id+"): Staying frosty. As if we have a choice...");
 		}
 		if (this.coordinates.getHeight() <= 0) {
 			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+") landing.");
