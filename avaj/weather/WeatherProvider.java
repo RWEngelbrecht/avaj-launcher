@@ -16,6 +16,8 @@ public class WeatherProvider {
 		return (weatherProvider);
 	}
 
+
+//TODO: Find a way to use coordinates for weather production
 	public String getCurrentWeather(Coordinates coordinates) {
 		int height = coordinates.getHeight();
 		// int latidude = coordinates.getLatitude();
