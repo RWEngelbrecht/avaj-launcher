@@ -12,6 +12,8 @@ public class Simulator {
 	public static PrintWriter printWriter = null;
 
 	public static void main(String[] arg) throws InterruptedException {
+		if (arg.length > 1)
+			throw new IllegalArgumentException();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(arg[0]));
 			String line = reader.readLine();
@@ -19,37 +21,41 @@ public class Simulator {
 			printWriter = new PrintWriter(simulation);
 
 			if (line != null) {
-				// weatherTower = new WeatherTower();
 				int simulations = Integer.parseInt(line.split(" ")[0]);
-				if (simulations < 0) {
-					System.out.println("Invalid simulation count " + simulations);
-					System.exit(1);
-				}
+
+				if (simulations < 0)
+					throw new IllegalArgumentException();
 				while ((line = reader.readLine()) != null) {
-					Flyable flyable = AircraftFactory.newAircraft(line.split(" ")[0], line.split(" ")[1],
-									Integer.parseInt(line.split(" ")[2]), Integer.parseInt(line.split(" ")[3]),
-									Integer.parseInt(line.split(" ")[4]));
+					String[] data = line.split(" ");
+					if (data.length > 5) {
+						System.out.println("Error: Something is wrong with your scenario file...");
+						System.exit(2);
+					}
+					Flyable flyable = AircraftFactory.newAircraft(data[0], data[1],
+									Integer.parseInt(data[2]), Integer.parseInt(data[3]),
+									Integer.parseInt(data[4]));
 					if (flyable != null)
 						flyables.add(flyable);
 				}
-
 				for (Flyable flyable : flyables) {
 					flyable.registerTower(weatherTower);
 				}
-
 				for (int i = 1; i <= simulations; i++) {
 					weatherTower.changeWeather();
-					
 				}
 				reader.close();
 				printWriter.close();
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("Couldn't find file " + arg[0]);
+			System.out.println("Error: Couldn't find file " + arg[0]);
 		} catch (IOException e) {
-			System.out.println("There was an error while reading the file " + arg[0]);
+			System.out.println("Error: An error occurred while reading the file " + arg[0]);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("Specify simulation file");
+			System.out.println("Error: Specify scenario file...");
+		} catch (NumberFormatException e) {
+			System.out.println("Error: Simulation count incompatible...");
+		} catch (IllegalArgumentException e) {
+			System.out.println("Error: What am I supposed to do with these arguments?");
 		}
 	}
 }
