@@ -6,34 +6,34 @@ import avaj.simulator.interfaces.*;
 public class JetPlane extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 
-	protected JetPlane(String name, Coordinates coordinates) {
+	JetPlane(String name, Coordinates coordinates) {
 		super(name, coordinates);
 	}
 
 	public void updateConditions() {
 		String weather = this.weatherTower.getWeather(this.coordinates);
-		if (weather.equalsIgnoreCase("sun")) {
+		if (weather.equalsIgnoreCase("sun") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude() + 10,
 				this.coordinates.getHeight() + 2
 			);
-			Simulator.printWriter.println("JetPlane#"+this.name+"("+this.id+"): IS THAT GIANT BALL OF BURNING GASS COMING RIGHT FOR U- Oh wait, that's the Sun.");
-		} else if (weather.equalsIgnoreCase("rain")) {
+			Simulator.printWriter.println("JetPlane#"+this.name+"("+this.id+"): Out along the edges, always where I burn to be... The further on the edge, the hotter the intensity...");
+		} else if (weather.equalsIgnoreCase("rain") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude() + 5,
 				this.coordinates.getHeight()
 			);
 			Simulator.printWriter.println("JetPlane#"+this.name+"("+this.id+"): I fly between the raindrops.");
-		} else if (weather.equalsIgnoreCase("fog")) {
+		} else if (weather.equalsIgnoreCase("fog") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude() + 1,
 				this.coordinates.getHeight()
 			);
 			Simulator.printWriter.println("JetPlane#"+this.name+"("+this.id+"): Ever see that movie The Fog? Not a good time?");
-		} else if (weather.equalsIgnoreCase("snow")) {
+		} else if (weather.equalsIgnoreCase("snow") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude(),

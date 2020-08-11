@@ -7,7 +7,7 @@ public class Baloon extends Aircraft implements Flyable {
 
 	private WeatherTower weatherTower;
 
-	protected Baloon(String name, Coordinates coordinates) {
+	Baloon(String name, Coordinates coordinates) {
 		super(name, coordinates);
 	}
 
@@ -19,22 +19,22 @@ public class Baloon extends Aircraft implements Flyable {
 				this.coordinates.getLatitude(),
 				this.coordinates.getHeight() + 4
 			);
-			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): Praise the sun!");
-			System.out.println("Baloon#"+this.name+"("+this.id+"): Praise the sun!");
+			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): I could easily do this in less than 80 days!");
+			// System.out.println("Baloon#"+this.name+"("+this.id+"): I could easily do this in less than 80 days!!");
 		} else if (weather.equalsIgnoreCase("rain") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude(),
 				this.coordinates.getHeight() - 5
 			);
-			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): Raindrops keep falling on my head... Wait... *screams*");
+			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): The top of this balloon is 100 degrees Centigrade... Time to make some tea.");
 		} else if (weather.equalsIgnoreCase("fog") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
 				this.coordinates.getLatitude(),
 				this.coordinates.getHeight() - 3
 			);
-			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): You'd think the rotors would help clear this fog.");
+			Simulator.printWriter.println("Baloon#"+this.name+"("+this.id+"): Hope I can still see any obstacles at least 30 seconds before colission, else I'm screwed.");
 		} else if (weather.equalsIgnoreCase("snow") && this.coordinates.getHeight() > 0) {
 			this.coordinates = new Coordinates(
 				this.coordinates.getLongitude(),
@@ -48,7 +48,6 @@ public class Baloon extends Aircraft implements Flyable {
 			this.weatherTower.unregister(this);
 			Simulator.printWriter.println("Tower says: Baloon#"+this.name+"("+this.id+") unregistered from weather tower.");
 		}
-// System.out.printf("new long: %d%nnew lat: %d%nnew height: %d%n",this.coordinates.getLongitude(),this.coordinates.getLatitude(),this.coordinates.getHeight());
 	}
 
 	public void registerTower(WeatherTower weatherTower) {
